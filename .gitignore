@@ -1,3 +1,4 @@
 homework-env
 __pycache__
 env
+.env
