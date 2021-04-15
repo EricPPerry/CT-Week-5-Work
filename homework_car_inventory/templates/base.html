@@ -22,13 +22,28 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('main_site.home') }}">Home</a>
             </li>
-            <!--Will have just 'Sign In' or 'My Garage' show up once we are able to determine if the user is signed in-->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('auth.signin')  }}">Sign In</a>
-              </li>
+
+
+            {% if current_user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('auth.my_garage')  }}">My Garage</a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
+            </li>
+            
+              
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.signin')  }}">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.my_garage')  }}">My Garage</a>
+            </li>
+            {% endif %}
+            
+            
+            
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search other garages" aria-label="Search">
